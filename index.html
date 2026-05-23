@@ -1,1 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<title>HarborLeaf Genetics</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:root {
+  --accent: #00b7ff;
+  --accent-glow: rgba(0, 183, 255, 0.75);
+  --silver: #d8e6ee;
+  --dark-blue: #06131d;
+}
+
+body {
+  margin: 0;
+  background: #02070b;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.hero-banner {
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+  border-bottom: 2px solid var(--accent);
+  box-shadow: 0 0 25px var(--accent-glow);
+}
+
+.hero-banner img {
+  width: 100%;
+  display: block;
+}
+
+header {
+  padding: 34px 15px 24px;
+  background: linear-gradient(180deg, #000, var(--dark-blue));
+  border-bottom: 2px solid var(--accent);
+}
+
+header h1 {
+  color: var(--silver);
+  font-size: 2.7rem;
+  text-shadow: 0 0 15px var(--accent-glow);
+  margin: 0 0 10px;
+  letter-spacing: 1px;
+}
+
+header p {
+  color: #b9d8e8;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.motto {
+  margin-top: 18px;
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--accent);
+  text-shadow: 0 0 15px var(--accent-glow);
+}
+
+.nav {
+  padding: 18px 10px;
+  background: #02070b;
+}
+
+.nav a {
+  display: inline-block;
+  margin: 7px;
+  padding: 13px 18px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  background: #07131d;
+}
+
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 20px;
+}
+
+.section {
+  margin: 35px 0;
+}
+
+.section-title {
+  font-size: 2rem;
+  color: var(--accent);
+  text-align: center;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.info-box {
+  background: #07131d;
+  border: 2px solid #153242;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 900px;
+  margin: auto;
+  color: #d6e7ef;
+  line-height: 1.6;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #07131d;
+  border: 2px solid #153242;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 22px rgba(0, 183, 255, 0.18);
+}
+
+.main-product-img {
+  width: 100%;
+  display: block;
+  border-bottom: 2px solid #153242;
+}
+
+.gallery {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 12px;
+  background: #02070b;
+}
+
+.gallery img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 2px solid #153242;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.gallery img:hover {
+  border-color: var(--accent);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: var(--accent);
+}
+
+.price {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+  font-weight: bold;
+  color: var(--silver);
+}
+
+.card-text {
+  color: #c6d8e0;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.option-label {
+  text-align: left;
+  color: var(--accent);
+  font-weight: bold;
+  margin: 14px 0 6px;
+}
+
+.option-select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #102231;
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.selection-preview {
+  background: #02070b;
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  padding: 12px;
+  color: var(--accent);
+  margin-bottom: 15px;
+  min-height: 55px;
+  line-height: 1.5;
+}
+
+.cart-btn,
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 14px;
+  background: var(--accent);
+  color: black;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cart-section {
+  margin-top: 50px;
+  background: #07131d;
+  border: 2px solid #153242;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.cart-item {
+  padding: 15px;
+  border-bottom: 1px solid #153242;
+  line-height: 1.6;
+}
+
+.cart-total {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.checkout-box {
+  margin: 22px auto 0;
+  padding: 18px;
+  max-width: 760px;
+  background: #02070b;
+  border: 1px solid var(--accent);
+  border-radius: 18px;
+  color: #ddd;
+  line-height: 1.6;
+}
+
+.link-btn {
+  display: block;
+  width: fit-content;
+  margin: 16px auto;
+  padding: 14px 28px;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+}
+
+.close-lightbox {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+footer {
+  padding: 40px 20px;
+  color: #7895a3;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero-banner">
+  <img src="/images/harborleaf-genetics-banner.png" alt="HarborLeaf Genetics Banner">
+</section>
+
+<header>
+  <h1>HarborLeaf Genetics</h1>
+  <p>Coastal bred genetics with a deep-rooted grower mindset.</p>
+  <div class="motto">EST. 2024 • HARBOR GROWN</div>
+</header>
+
+<nav class="nav">
+  <a href="#about">About</a>
+  <a href="#genetics">Genetics</a>
+  <a href="#cart">Cart</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<div class="container">
+
+  <section class="section" id="about">
+    <div class="section-title">About HarborLeaf</div>
+
+    <div class="info-box">
+      <p>
+        HarborLeaf Genetics is a coastal-inspired cannabis genetics project built around small-batch selections,
+        tester runs, and unique strain artwork.
+      </p>
+      <br>
+      <p>
+        This page is set up as a simple live menu for available genetics, tester packs, future plant photos,
+        and direct contact.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="genetics">
+    <div class="section-title">Available Genetics</div>
+    <div class="product-grid" id="productGrid"></div>
+  </section>
+
+  <section class="section" id="cart">
+    <div class="cart-section">
+      <div class="section-title">Request List</div>
+      <div id="cartItems"></div>
+      <div class="cart-total" id="cartTotal">No packs selected.</div>
+
+      <div class="checkout-box">
+        <p>
+          Add genetics to your request list, then submit by email.
+          Availability, pricing, and tester details can be confirmed directly.
+        </p>
+      </div>
+
+      <button class="submit-btn" onclick="submitOrder()">Submit Request By Email</button>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="section-title">Contact</div>
+
+    <div class="info-box">
+      <p>
+        For availability, tester info, or collaboration questions, contact HarborLeaf Genetics.
+      </p>
+
+      <a class="link-btn" href="mailto:UPDATE_EMAIL_HERE">
+        Email HarborLeaf
+      </a>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  HarborLeaf Genetics • Coastal Roots • Small Batch Selections
+</footer>
+
+<div class="lightbox" id="lightbox">
+  <div class="close-lightbox" onclick="closeLightbox()">✕</div>
+  <img id="lightboxImg" alt="">
+</div>
+
+<script>
+var products = [
+  {
+    code: "HLG-01",
+    name: "Berry Rx",
+    priceText: "Contact for availability",
+    description: "HarborLeaf Genetics tester or featured strain listing. Update lineage, seed type, and pack info once confirmed.",
+    image: "berry-rx.jpeg",
+    gallery: [
+      "berry-rx.jpeg"
+    ],
+    optionGroups: [
+      {
+        label: "Pack Type",
+        options: [
+          "Tester Pack",
+          "Photo/Fem",
+          "Photo/Reg",
+          "Auto/Fem",
+          "Ask About Availability"
+        ]
+      }
+    ],
+    optionHelp: "Choose the closest option for now. This can be edited once HarborLeaf confirms the exact release type."
+  }
+];
+
+var cart = [];
+
+function buildProducts() {
+  var productGrid = document.getElementById("productGrid");
+  productGrid.innerHTML = "";
+
+  products.forEach(function(product, index) {
+    var card = document.createElement("div");
+    card.className = "card";
+
+    var mainImg = document.createElement("img");
+    mainImg.className = "main-product-img";
+    mainImg.src = "/images/" + product.image;
+    mainImg.alt = product.name;
+    mainImg.onerror = function() {
+      this.style.display = "none";
+    };
+    card.appendChild(mainImg);
+
+    if (product.gallery && product.gallery.length > 0) {
+      var gallery = document.createElement("div");
+      gallery.className = "gallery";
+
+      product.gallery.forEach(function(imgName) {
+        var thumb = document.createElement("img");
+        thumb.src = "/images/" + imgName;
+        thumb.alt = imgName;
+        thumb.onclick = function() {
+          openLightbox("/images/" + imgName);
+        };
+        thumb.onerror = function() {
+          this.style.display = "none";
+        };
+        gallery.appendChild(thumb);
+      });
+
+      card.appendChild(gallery);
+    }
+
+    var content = document.createElement("div");
+    content.className = "card-content";
+
+    var title = document.createElement("div");
+    title.className = "card-title";
+    title.textContent = product.name;
+    content.appendChild(title);
+
+    var price = document.createElement("div");
+    price.className = "price";
+    price.textContent = product.priceText;
+    content.appendChild(price);
+
+    var desc = document.createElement("div");
+    desc.className = "card-text";
+    desc.textContent = product.description;
+    content.appendChild(desc);
+
+    if (product.optionGroups && product.optionGroups.length > 0) {
+      product.optionGroups.forEach(function(group, groupIndex) {
+        var label = document.createElement("div");
+        label.className = "option-label";
+        label.textContent = group.label;
+        content.appendChild(label);
+
+        var select = document.createElement("select");
+        select.className = "option-select";
+        select.id = "option-" + index + "-" + groupIndex;
+
+        var blank = document.createElement("option");
+        blank.value = "";
+        blank.textContent = "Select " + group.label;
+        select.appendChild(blank);
+
+        group.options.forEach(function(optionText) {
+          var option = document.createElement("option");
+          option.value = optionText;
+          option.textContent = optionText;
+          select.appendChild(option);
+        });
+
+        select.onchange = function() {
+          updateSelectionPreview(index);
+        };
+
+        content.appendChild(select);
+      });
+
+      var preview = document.createElement("div");
+      preview.className = "selection-preview";
+      preview.id = "preview-" + index;
+      preview.textContent = "Selection will appear here.";
+      content.appendChild(preview);
+    }
+
+    var button = document.createElement("button");
+    button.className = "cart-btn";
+    button.textContent = "Add To Request List";
+    button.onclick = function() {
+      addToCart(index);
+    };
+    content.appendChild(button);
+
+    card.appendChild(content);
+    productGrid.appendChild(card);
+  });
+}
+
+function getSelectedOptions(index) {
+  var product = products[index];
+  var selections = [];
+
+  if (!product.optionGroups || product.optionGroups.length === 0) {
+    return selections;
+  }
+
+  product.optionGroups.forEach(function(group, groupIndex) {
+    var select = document.getElementById("option-" + index + "-" + groupIndex);
+
+    if (select && select.value !== "") {
+      selections.push({
+        label: group.label,
+        value: select.value
+      });
+    }
+  });
+
+  return selections;
+}
+
+function updateSelectionPreview(index) {
+  var preview = document.getElementById("preview-" + index);
+  var selections = getSelectedOptions(index);
+
+  if (!preview) {
+    return;
+  }
+
+  if (selections.length === 0) {
+    preview.textContent = "Selection will appear here.";
+    return;
+  }
+
+  var html = "Selected:<br><br>";
+
+  selections.forEach(function(selection) {
+    html += "<strong>" + selection.label + ":</strong> " + selection.value + "<br>";
+  });
+
+  preview.innerHTML = html;
+}
+
+function addToCart(index) {
+  var originalProduct = products[index];
+  var selections = getSelectedOptions(index);
+
+  if (originalProduct.optionGroups && selections.length !== originalProduct.optionGroups.length) {
+    alert("Please complete all selections before adding to request list.");
+    return;
+  }
+
+  var product = Object.assign({}, originalProduct);
+  product.selections = selections;
+
+  cart.push(product);
+  renderCart();
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+
+function renderCart() {
+  var cartItems = document.getElementById("cartItems");
+  var cartTotal = document.getElementById("cartTotal");
+
+  cartItems.innerHTML = "";
+
+  cart.forEach(function(item, index) {
+    var div = document.createElement("div");
+    div.className = "cart-item";
+
+    var selectionsHTML = "";
+
+    if (item.selections && item.selections.length > 0) {
+      item.selections.forEach(function(selection) {
+        selectionsHTML += selection.label + ": <strong>" + selection.value + "</strong><br>";
+      });
+    }
+
+    div.innerHTML =
+      "<strong>" + item.code + "</strong><br>" +
+      item.name + "<br>" +
+      selectionsHTML +
+      item.priceText +
+      "<br><br>";
+
+    var removeButton = document.createElement("button");
+    removeButton.className = "cart-btn";
+    removeButton.textContent = "Remove";
+    removeButton.onclick = function() {
+      removeFromCart(index);
+    };
+
+    div.appendChild(removeButton);
+    cartItems.appendChild(div);
+  });
+
+  if (cart.length === 0) {
+    cartTotal.textContent = "No packs selected.";
+  } else {
+    cartTotal.textContent = "Selected packs: " + cart.length;
+  }
+}
+
+function submitOrder() {
+  if (cart.length === 0) {
+    alert("Request list is empty.");
+    return;
+  }
+
+  var body = "HarborLeaf Genetics Request:%0D%0A%0D%0A";
+
+  cart.forEach(function(item) {
+    body += item.code + " - " + item.name;
+
+    if (item.selections && item.selections.length > 0) {
+      item.selections.forEach(function(selection) {
+        body += " - " + selection.label + ": " + selection.value;
+      });
+    }
+
+    body += " - " + item.priceText;
+    body += "%0D%0A";
+  });
+
+  body += "%0D%0ACustomer Name:%0D%0A";
+  body += "Email:%0D%0A";
+  body += "Shipping State:%0D%0A";
+  body += "Notes:%0D%0A";
+
+  window.location.href =
+    "mailto:UPDATE_EMAIL_HERE?subject=HarborLeaf Genetics Request&body=" + body;
+}
+
+function openLightbox(src) {
+  document.getElementById("lightboxImg").src = src;
+  document.getElementById("lightbox").classList.add("active");
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("active");
+}
+
+document.addEventListener("DOMContentLoaded", buildProducts);
+</script>
+
+</body>
+</html>
